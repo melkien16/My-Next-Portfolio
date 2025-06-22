@@ -1,0 +1,186 @@
+export const terminalCommands = [
+  "$ whoami",
+  "melkie_yilk",
+  "",
+  "$ cat personal_info.json",
+  "{",
+  '  "name": "Melkie Yilk",',
+  '  "role": "MERN Stack Developer",',
+  '  "experience": "2+ years",',
+  '  "location": "Addis ababa,Ethiopia",',
+  '  "status": "Available for projects"',
+  "}",
+  "",
+  "$ ls -la skills/",
+  "drwxr-xr-x  frontend/",
+  "drwxr-xr-x  backend/",
+  "drwxr-xr-x  tools/",
+  "-rw-r--r--  react.js",
+  "-rw-r--r--  node.js",
+  "-rw-r--r--  mongodb.db",
+  "-rw-r--r--  express.js",
+  "",
+  "$ git log --oneline",
+  "a1b2c3d Built RentSmart platform",
+  "e4f5g6h Developed TaskFlow Pro",
+  "i7j8k9l Created EcoTracker app",
+  "",
+  "$ echo $PASSION",
+  "Building scalable web applications",
+  "Problem solving & clean code",
+  "Continuous learning & growth",
+  "",
+  "$ status",
+  "● Active and ready for new challenges",
+  "● Open to collaboration",
+  "● Available for freelance projects",
+  "",
+  "$ _",
+];
+
+export const skills = {
+  frontend: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"],
+  backend: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"],
+  tools: ["Git/GitHub", "Docker", "AWS", "Vercel", "Figma"],
+};
+
+export const projects = [
+  {
+    title: "RentSmart",
+    description:
+      "Rental management platform with real-time messaging and payment integration.",
+    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+    features: [
+      "Real-time messaging system",
+      "Stripe payment integration",
+      "Property analytics dashboard",
+      "Mobile-responsive design",
+      "User authentication & authorization",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["Full-stack", "Real-time"],
+    category: "fullstack",
+  },
+  {
+    title: "TaskFlow Pro",
+    description:
+      "Project management tool with team collaboration and time tracking.",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+    features: [
+      "Team collaboration tools",
+      "Time tracking & reporting",
+      "Project timeline visualization",
+      "Role-based access control",
+      "Email notifications",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["SaaS", "Team"],
+    category: "frontend",
+  },
+  {
+    title: "EcoTracker",
+    description: "Environmental impact tracking app with data visualization.",
+    tech: ["React Native", "Express", "MongoDB", "Chart.js"],
+    features: [
+      "Carbon footprint calculator",
+      "Interactive data charts",
+      "Social sharing features",
+      "Achievement system",
+      "Offline data sync",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["Mobile", "Analytics"],
+    category: "mobile",
+  },
+  {
+    title: "CodeSnippet Hub",
+    description: "Developer community platform for sharing code snippets.",
+    tech: ["Next.js", "MongoDB", "Prism.js", "Tailwind"],
+    features: [
+      "Syntax highlighting for 50+ languages",
+      "Advanced search & filtering",
+      "User profiles & collections",
+      "Code sharing & embedding",
+      "Community voting system",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["Community", "Tools"],
+    category: "fullstack",
+  },
+  {
+    title: "AI Content Generator",
+    description: "AI-powered content creation tool with multiple templates.",
+    tech: ["React", "OpenAI API", "Node.js", "Redis"],
+    features: [
+      "Multiple content templates",
+      "AI-powered generation",
+      "Export to various formats",
+      "Usage analytics",
+      "Team collaboration",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["AI", "SaaS"],
+    category: "backend",
+  },
+  {
+    title: "E-Commerce Dashboard",
+    description: "Modern admin dashboard for e-commerce management.",
+    tech: ["Vue.js", "Laravel", "MySQL", "Chart.js"],
+    features: [
+      "Sales analytics & reporting",
+      "Inventory management",
+      "Customer relationship tools",
+      "Order processing system",
+      "Multi-store support",
+    ],
+    image: "/placeholder.svg?height=300&width=500",
+    liveUrl: "#",
+    githubUrl: "#",
+    tags: ["Dashboard", "Analytics"],
+    category: "frontend",
+  },
+];
+
+export const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Project Manager",
+    content:
+      "Exceptional work on our web application. Outstanding problem-solving skills.",
+    avatar: "/placeholder.svg?height=60&width=60",
+  },
+  {
+    name: "David Chen",
+    role: "Senior Developer",
+    content:
+      "Great experience working with Melkie. Brings creativity and technical excellence.",
+    avatar: "/placeholder.svg?height=60&width=60",
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Startup Founder",
+    content:
+      "Helped us build our MVP from scratch. Full-stack expertise made all the difference.",
+    avatar: "/placeholder.svg?height=60&width=60",
+  },
+];
+
+export const filterOptions = [
+  { value: "all", label: "All Projects" },
+  { value: "fullstack", label: "Full-Stack" },
+  { value: "frontend", label: "Frontend" },
+  { value: "backend", label: "Backend" },
+  { value: "mobile", label: "Mobile" },
+];
+
+

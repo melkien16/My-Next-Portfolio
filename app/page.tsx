@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowDown,
   Download,
@@ -24,271 +24,118 @@ import {
   Moon,
   MapPin,
   Award,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+import {
+  terminalCommands,
+  projects,
+  skills,
+  filterOptions,
+  testimonials,
+} from "./data";
 
 export default function Portfolio() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("hero")
-  const [terminalText, setTerminalText] = useState("")
-  const [isDarkMode, setIsDarkMode] = useState(true)
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [terminalText, setTerminalText] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
     // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem("theme")
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark")
+      setIsDarkMode(savedTheme === "dark");
     }
 
     // Apply theme to document
-    document.documentElement.classList.toggle("dark", isDarkMode)
-  }, [isDarkMode])
+    document.documentElement.classList.toggle("dark", isDarkMode);
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
-    const newTheme = !isDarkMode
-    setIsDarkMode(newTheme)
-    localStorage.setItem("theme", newTheme ? "dark" : "light")
-    document.documentElement.classList.toggle("dark", newTheme)
-  }
-
-  const terminalCommands = [
-    "$ whoami",
-    "melkie_yilk",
-    "",
-    "$ cat personal_info.json",
-    "{",
-    '  "name": "Melkie Yilk",',
-    '  "role": "MERN Stack Developer",',
-    '  "experience": "2+ years",',
-    '  "location": "Addis ababa,Ethiopia",',
-    '  "status": "Available for projects"',
-    "}",
-    "",
-    "$ ls -la skills/",
-    "drwxr-xr-x  frontend/",
-    "drwxr-xr-x  backend/",
-    "drwxr-xr-x  tools/",
-    "-rw-r--r--  react.js",
-    "-rw-r--r--  node.js",
-    "-rw-r--r--  mongodb.db",
-    "-rw-r--r--  express.js",
-    "",
-    "$ git log --oneline",
-    "a1b2c3d Built RentSmart platform",
-    "e4f5g6h Developed TaskFlow Pro",
-    "i7j8k9l Created EcoTracker app",
-    "",
-    "$ echo $PASSION",
-    "Building scalable web applications",
-    "Problem solving & clean code",
-    "Continuous learning & growth",
-    "",
-    "$ status",
-    "● Active and ready for new challenges",
-    "● Open to collaboration",
-    "● Available for freelance projects",
-    "",
-    "$ _",
-  ]
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", newTheme);
+  };
 
   useEffect(() => {
-    let index = 0
+    let index = 0;
     const timer = setInterval(() => {
       if (index < terminalCommands.length) {
         setTerminalText((prev) => {
-          const newLine = terminalCommands[index]
-          return prev + (prev ? "\n" : "") + newLine
-        })
-        index++
+          const newLine = terminalCommands[index];
+          return prev + (prev ? "\n" : "") + newLine;
+        });
+        index++;
       } else {
-        clearInterval(timer)
+        clearInterval(timer);
       }
-    }, 600)
+    }, 600);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
-  const projects = [
-    {
-      title: "RentSmart",
-      description: "Rental management platform with real-time messaging and payment integration.",
-      tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-      features: [
-        "Real-time messaging system",
-        "Stripe payment integration",
-        "Property analytics dashboard",
-        "Mobile-responsive design",
-        "User authentication & authorization",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["Full-stack", "Real-time"],
-      category: "fullstack",
-    },
-    {
-      title: "TaskFlow Pro",
-      description: "Project management tool with team collaboration and time tracking.",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-      features: [
-        "Team collaboration tools",
-        "Time tracking & reporting",
-        "Project timeline visualization",
-        "Role-based access control",
-        "Email notifications",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["SaaS", "Team"],
-      category: "frontend",
-    },
-    {
-      title: "EcoTracker",
-      description: "Environmental impact tracking app with data visualization.",
-      tech: ["React Native", "Express", "MongoDB", "Chart.js"],
-      features: [
-        "Carbon footprint calculator",
-        "Interactive data charts",
-        "Social sharing features",
-        "Achievement system",
-        "Offline data sync",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["Mobile", "Analytics"],
-      category: "mobile",
-    },
-    {
-      title: "CodeSnippet Hub",
-      description: "Developer community platform for sharing code snippets.",
-      tech: ["Next.js", "MongoDB", "Prism.js", "Tailwind"],
-      features: [
-        "Syntax highlighting for 50+ languages",
-        "Advanced search & filtering",
-        "User profiles & collections",
-        "Code sharing & embedding",
-        "Community voting system",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["Community", "Tools"],
-      category: "fullstack",
-    },
-    {
-      title: "AI Content Generator",
-      description: "AI-powered content creation tool with multiple templates.",
-      tech: ["React", "OpenAI API", "Node.js", "Redis"],
-      features: [
-        "Multiple content templates",
-        "AI-powered generation",
-        "Export to various formats",
-        "Usage analytics",
-        "Team collaboration",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["AI", "SaaS"],
-      category: "backend",
-    },
-    {
-      title: "E-Commerce Dashboard",
-      description: "Modern admin dashboard for e-commerce management.",
-      tech: ["Vue.js", "Laravel", "MySQL", "Chart.js"],
-      features: [
-        "Sales analytics & reporting",
-        "Inventory management",
-        "Customer relationship tools",
-        "Order processing system",
-        "Multi-store support",
-      ],
-      image: "/placeholder.svg?height=300&width=500",
-      liveUrl: "#",
-      githubUrl: "#",
-      tags: ["Dashboard", "Analytics"],
-      category: "frontend",
-    },
-  ]
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
-  const skills = {
-    frontend: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"],
-    backend: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"],
-    tools: ["Git/GitHub", "Docker", "AWS", "Vercel", "Figma"],
-  }
-
-  const [selectedFilter, setSelectedFilter] = useState("all")
-
-  const filteredProjects = projects.filter((project) => selectedFilter === "all" || project.category === selectedFilter)
-
-  const filterOptions = [
-    { value: "all", label: "All Projects" },
-    { value: "fullstack", label: "Full-Stack" },
-    { value: "frontend", label: "Frontend" },
-    { value: "backend", label: "Backend" },
-    { value: "mobile", label: "Mobile" },
-  ]
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Project Manager",
-      content: "Exceptional work on our web application. Outstanding problem-solving skills.",
-      avatar: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      name: "David Chen",
-      role: "Senior Developer",
-      content: "Great experience working with Melkie. Brings creativity and technical excellence.",
-      avatar: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Startup Founder",
-      content: "Helped us build our MVP from scratch. Full-stack expertise made all the difference.",
-      avatar: "/placeholder.svg?height=60&width=60",
-    },
-  ]
+  const filteredProjects = projects.filter(
+    (project) => selectedFilter === "all" || project.category === selectedFilter
+  );
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "projects", "resume", "testimonials", "contact"]
-      const scrollPosition = window.scrollY + 100
+      const sections = [
+        "hero",
+        "about",
+        "skills",
+        "projects",
+        "resume",
+        "testimonials",
+        "contact",
+      ];
+      const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white font-mono transition-colors duration-300">
@@ -306,24 +153,26 @@ export default function Portfolio() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {["About", "Skills", "Projects", "Resume", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm transition-all duration-300 relative group ${
-                    activeSection === item.toLowerCase()
-                      ? "text-[#00ff99]"
-                      : "text-gray-500 dark:text-gray-400 hover:text-[#00ff99]"
-                  }`}
-                >
-                  {item}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-full ${
-                      activeSection === item.toLowerCase() ? "w-full" : ""
+              {["About", "Skills", "Projects", "Resume", "Contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className={`text-sm transition-all duration-300 relative group ${
+                      activeSection === item.toLowerCase()
+                        ? "text-[#00ff99]"
+                        : "text-gray-500 dark:text-gray-400 hover:text-[#00ff99]"
                     }`}
-                  ></span>
-                </button>
-              ))}
+                  >
+                    {item}
+                    <span
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-full ${
+                        activeSection === item.toLowerCase() ? "w-full" : ""
+                      }`}
+                    ></span>
+                  </button>
+                )
+              )}
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -351,7 +200,11 @@ export default function Portfolio() {
                 )}
               </button>
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
@@ -365,27 +218,36 @@ export default function Portfolio() {
             className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-white/10"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {["About", "Skills", "Projects", "Resume", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors relative group w-full text-left"
-                >
-                  {item}
-                  <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-8"></span>
-                </button>
-              ))}
+              {["About", "Skills", "Projects", "Resume", "Contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className="block px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors relative group w-full text-left"
+                  >
+                    {item}
+                    <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-8"></span>
+                  </button>
+                )
+              )}
             </div>
           </motion.div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section
+        id="hero"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
                 Hi, I'm <span className="text-[#00ff99]">Melkie</span>
               </h1>
@@ -393,7 +255,8 @@ export default function Portfolio() {
                 MERN Stack Developer
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
-                Building scalable web applications with modern technologies. Turning ideas into digital reality.
+                Building scalable web applications with modern technologies.
+                Turning ideas into digital reality.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -417,7 +280,9 @@ export default function Portfolio() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex items-center gap-4 mt-8"
               >
-                <span className="text-gray-500 dark:text-gray-400 text-sm">Follow me:</span>
+                <span className="text-gray-500 dark:text-gray-400 text-sm">
+                  Follow me:
+                </span>
                 <div className="flex gap-3">
                   <Link
                     href="https://github.com/melkien16"
@@ -512,7 +377,9 @@ export default function Portfolio() {
               <Terminal className="inline-block mr-3 h-8 w-8 text-[#00ff99]" />
               About Me
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">Get to know me through code and creativity</p>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              Get to know me through code and creativity
+            </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -544,8 +411,12 @@ export default function Portfolio() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">Melkie Yilk</h3>
-                      <p className="text-[#00ff99] font-semibold">MERN Stack Developer</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        Melkie Yilk
+                      </h3>
+                      <p className="text-[#00ff99] font-semibold">
+                        MERN Stack Developer
+                      </p>
                       <div className="flex items-center gap-2 mt-2 text-sm text-gray-600 dark:text-gray-400">
                         <MapPin className="h-4 w-4" />
                         <span>Ethiopia</span>
@@ -554,19 +425,28 @@ export default function Portfolio() {
                   </div>
 
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    Passionate MERN Stack Developer with 2+ years of experience building scalable web applications. I
-                    love turning complex problems into simple, beautiful solutions through clean code and innovative
-                    thinking.
+                    Passionate MERN Stack Developer with 2+ years of experience
+                    building scalable web applications. I love turning complex
+                    problems into simple, beautiful solutions through clean code
+                    and innovative thinking.
                   </p>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                      <div className="text-2xl font-bold text-[#00ff99]">2+</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                      <div className="text-2xl font-bold text-[#00ff99]">
+                        2+
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        Years Experience
+                      </div>
                     </div>
                     <div className="text-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                      <div className="text-2xl font-bold text-[#00ff99]">15+</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Projects Completed</div>
+                      <div className="text-2xl font-bold text-[#00ff99]">
+                        15+
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        Projects Completed
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -596,7 +476,9 @@ export default function Portfolio() {
                       className="flex items-center gap-3"
                     >
                       <div className="w-2 h-2 bg-[#00ff99] rounded-full"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{item}</span>
+                      <span className="text-gray-600 dark:text-gray-300">
+                        {item}
+                      </span>
                     </motion.div>
                   ))}
                 </CardContent>
@@ -605,9 +487,21 @@ export default function Portfolio() {
               {/* Action Cards */}
               <div className="grid grid-cols-3 gap-4">
                 {[
-                  { icon: User, label: "Problem Solver", desc: "Complex challenges" },
-                  { icon: Briefcase, label: "Full-Stack", desc: "End-to-end solutions" },
-                  { icon: Award, label: "Quality Focused", desc: "Clean, efficient code" },
+                  {
+                    icon: User,
+                    label: "Problem Solver",
+                    desc: "Complex challenges",
+                  },
+                  {
+                    icon: Briefcase,
+                    label: "Full-Stack",
+                    desc: "End-to-end solutions",
+                  },
+                  {
+                    icon: Award,
+                    label: "Quality Focused",
+                    desc: "Clean, efficient code",
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -620,8 +514,12 @@ export default function Portfolio() {
                     <div className="w-12 h-12 bg-[#00ff99] rounded-full flex items-center justify-center mx-auto mb-3">
                       <item.icon className="h-6 w-6 text-black" />
                     </div>
-                    <h4 className="font-semibold text-sm text-gray-900 dark:text-white">{item.label}</h4>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{item.desc}</p>
+                    <h4 className="font-semibold text-sm text-gray-900 dark:text-white">
+                      {item.label}
+                    </h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {item.desc}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -682,7 +580,9 @@ export default function Portfolio() {
                     {"\n"}
                     <span className="text-cyan-400"> "role"</span>
                     <span className="text-white">: </span>
-                    <span className="text-green-400">"MERN Stack Developer"</span>
+                    <span className="text-green-400">
+                      "MERN Stack Developer"
+                    </span>
                     <span className="text-white">,</span>
                     {"\n"}
                     <span className="text-cyan-400"> "experience"</span>
@@ -697,7 +597,9 @@ export default function Portfolio() {
                     {"\n"}
                     <span className="text-cyan-400"> "status"</span>
                     <span className="text-white">: </span>
-                    <span className="text-green-400">"Available for projects"</span>
+                    <span className="text-green-400">
+                      "Available for projects"
+                    </span>
                     {"\n"}
                     <span className="text-white">{"}"}</span>
                     {"\n\n"}
@@ -728,7 +630,10 @@ export default function Portfolio() {
                     <span className="text-white"> log --oneline</span>
                     {"\n"}
                     <span className="text-yellow-400">a1b2c3d</span>
-                    <span className="text-white"> Built RentSmart platform</span>
+                    <span className="text-white">
+                      {" "}
+                      Built RentSmart platform
+                    </span>
                     {"\n"}
                     <span className="text-yellow-400">e4f5g6h</span>
                     <span className="text-white"> Developed TaskFlow Pro</span>
@@ -740,20 +645,32 @@ export default function Portfolio() {
                     <span className="text-blue-400">echo</span>
                     <span className="text-white"> $PASSION</span>
                     {"\n"}
-                    <span className="text-green-400">Building scalable web applications</span>
+                    <span className="text-green-400">
+                      Building scalable web applications
+                    </span>
                     {"\n"}
-                    <span className="text-green-400">Problem solving & clean code</span>
+                    <span className="text-green-400">
+                      Problem solving & clean code
+                    </span>
                     {"\n"}
-                    <span className="text-green-400">Continuous learning & growth</span>
+                    <span className="text-green-400">
+                      Continuous learning & growth
+                    </span>
                     {"\n\n"}
                     <span className="text-white">$ </span>
                     <span className="text-blue-400">status</span>
                     {"\n"}
-                    <span className="text-green-400">● Active and ready for new challenges</span>
+                    <span className="text-green-400">
+                      ● Active and ready for new challenges
+                    </span>
                     {"\n"}
-                    <span className="text-green-400">● Open to collaboration</span>
+                    <span className="text-green-400">
+                      ● Open to collaboration
+                    </span>
                     {"\n"}
-                    <span className="text-green-400">● Available for freelance projects</span>
+                    <span className="text-green-400">
+                      ● Available for freelance projects
+                    </span>
                     {"\n\n"}
                     <span className="text-white">$ </span>
                     <span className="animate-pulse">_</span>
@@ -775,7 +692,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Tech Stack & Expertise</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Tech Stack & Expertise
+            </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
               Technologies I work with to build amazing applications
             </p>
@@ -815,12 +734,17 @@ export default function Portfolio() {
                           key={skill}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: skillIndex * 0.1 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: skillIndex * 0.1,
+                          }}
                           viewport={{ once: true }}
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                         >
                           <div className="w-2 h-2 bg-[#00ff99] rounded-full"></div>
-                          <span className="text-gray-700 dark:text-gray-300 font-medium">{skill}</span>
+                          <span className="text-gray-700 dark:text-gray-300 font-medium">
+                            {skill}
+                          </span>
                         </motion.div>
                       ))}
                     </div>
@@ -838,7 +762,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Additional Technologies</h3>
+            <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+              Additional Technologies
+            </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 "GraphQL",
@@ -882,7 +808,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Featured Projects
+            </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
               Recent work showcasing my development skills
             </p>
@@ -925,7 +853,10 @@ export default function Portfolio() {
                     />
                     <div className="absolute top-4 right-4 flex gap-2">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} className="bg-[#00ff99] text-black text-xs">
+                        <Badge
+                          key={tag}
+                          className="bg-[#00ff99] text-black text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -933,7 +864,9 @@ export default function Portfolio() {
                   </div>
 
                   <CardHeader>
-                    <CardTitle className="text-xl text-gray-900 dark:text-white">{project.title}</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 dark:text-white">
+                      {project.title}
+                    </CardTitle>
                     <CardDescription className="text-gray-600 dark:text-gray-300">
                       {project.description}
                     </CardDescription>
@@ -943,7 +876,11 @@ export default function Portfolio() {
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-1">
                       {project.tech.map((tech) => (
-                        <Badge key={tech} variant="outline" className="border-[#00ff99]/30 text-[#00ff99] text-xs">
+                        <Badge
+                          key={tech}
+                          variant="outline"
+                          className="border-[#00ff99]/30 text-[#00ff99] text-xs"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -951,7 +888,9 @@ export default function Portfolio() {
 
                     {/* Project Features */}
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Key Features:</h4>
+                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
+                        Key Features:
+                      </h4>
                       <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
                         {project.features.slice(0, 3).map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-2">
@@ -963,7 +902,10 @@ export default function Portfolio() {
                     </div>
 
                     <div className="flex gap-2 pt-2">
-                      <Button size="sm" className="bg-[#00ff99] text-black hover:bg-[#00e187] flex-1">
+                      <Button
+                        size="sm"
+                        className="bg-[#00ff99] text-black hover:bg-[#00e187] flex-1"
+                      >
                         <ExternalLink className="h-4 w-4 mr-1" />
                         Live Demo
                       </Button>
@@ -992,9 +934,12 @@ export default function Portfolio() {
             <Card className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-[#00ff99]/20 p-8">
               <CardContent className="space-y-4">
                 <Github className="h-12 w-12 text-[#00ff99] mx-auto" />
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Explore More Projects</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Explore More Projects
+                </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Check out my GitHub profile for more projects, contributions, and open-source work.
+                  Check out my GitHub profile for more projects, contributions,
+                  and open-source work.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Link href="https://github.com/melkie-yilk">
@@ -1043,19 +988,22 @@ export default function Portfolio() {
                 period: "2022 - Present",
                 title: "Full-Stack Developer",
                 company: "Freelance",
-                description: "Developing custom web applications using MERN stack for various clients.",
+                description:
+                  "Developing custom web applications using MERN stack for various clients.",
               },
               {
                 period: "2021 - 2022",
                 title: "Frontend Developer",
                 company: "Tech Startup",
-                description: "Built responsive web interfaces and collaborated with design teams.",
+                description:
+                  "Built responsive web interfaces and collaborated with design teams.",
               },
               {
                 period: "2020 - 2021",
                 title: "Computer Science Student",
                 company: "University",
-                description: "Focused on software engineering principles and personal projects.",
+                description:
+                  "Focused on software engineering principles and personal projects.",
               },
             ].map((item, index) => (
               <motion.div
@@ -1068,18 +1016,29 @@ export default function Portfolio() {
               >
                 <div className="flex flex-col items-center">
                   <div className="w-4 h-4 bg-[#00ff99] rounded-full"></div>
-                  {index < 2 && <div className="w-0.5 h-20 bg-[#00ff99]/30 mt-2"></div>}
+                  {index < 2 && (
+                    <div className="w-0.5 h-20 bg-[#00ff99]/30 mt-2"></div>
+                  )}
                 </div>
                 <Card className="bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-white/10 flex-1">
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-                      <Badge variant="outline" className="border-[#00ff99] text-[#00ff99] w-fit">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        {item.title}
+                      </h3>
+                      <Badge
+                        variant="outline"
+                        className="border-[#00ff99] text-[#00ff99] w-fit"
+                      >
                         {item.period}
                       </Badge>
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">{item.company}</div>
-                    <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                      {item.company}
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {item.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -1098,7 +1057,9 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Testimonials</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Testimonials
+            </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -1114,10 +1075,15 @@ export default function Portfolio() {
                   <CardContent className="space-y-4">
                     <div className="flex justify-center mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-[#00ff99] fill-current" />
+                        <Star
+                          key={i}
+                          className="h-5 w-5 text-[#00ff99] fill-current"
+                        />
                       ))}
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 italic">"{testimonial.content}"</p>
+                    <p className="text-gray-600 dark:text-gray-300 italic">
+                      "{testimonial.content}"
+                    </p>
                     <div className="flex items-center justify-center gap-3">
                       <Image
                         src={testimonial.avatar || "/placeholder.svg"}
@@ -1127,8 +1093,12 @@ export default function Portfolio() {
                         className="rounded-full grayscale"
                       />
                       <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</div>
+                        <div className="font-semibold text-gray-900 dark:text-white">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          {testimonial.role}
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -1149,8 +1119,12 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Connect</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">Ready to bring your ideas to life?</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Let's Connect
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              Ready to bring your ideas to life?
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -1166,8 +1140,12 @@ export default function Portfolio() {
                   <Mail className="h-6 w-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-300">melkie.yilk@example.com</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Email
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    melkie.yilk@example.com
+                  </p>
                 </div>
               </div>
 
@@ -1176,8 +1154,12 @@ export default function Portfolio() {
                   <Linkedin className="h-6 w-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">LinkedIn</h3>
-                  <p className="text-gray-600 dark:text-gray-300">linkedin.com/in/melkie-yilk</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    LinkedIn
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    linkedin.com/in/melkie-yilk
+                  </p>
                 </div>
               </div>
 
@@ -1186,8 +1168,12 @@ export default function Portfolio() {
                   <Github className="h-6 w-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">GitHub</h3>
-                  <p className="text-gray-600 dark:text-gray-300">github.com/melkie-yilk</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    GitHub
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    github.com/melkie-yilk
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -1220,7 +1206,9 @@ export default function Portfolio() {
                     rows={5}
                     className="bg-white dark:bg-black border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
-                  <Button className="w-full bg-[#00ff99] text-black hover:bg-[#00e187]">Send Message</Button>
+                  <Button className="w-full bg-[#00ff99] text-black hover:bg-[#00e187]">
+                    Send Message
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -1234,19 +1222,31 @@ export default function Portfolio() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-gray-600 dark:text-gray-300">
-                Made with ❤️ and JetBrains Mono by <span className="text-[#00ff99]">Melkie Yilk</span>
+                Made with ❤️ and JetBrains Mono by{" "}
+                <span className="text-[#00ff99]">Melkie Yilk</span>
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">© 2024 All rights reserved.</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                © 2024 All rights reserved.
+              </p>
             </div>
 
             <div className="flex items-center gap-4">
-              <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors">
+              <Link
+                href="#"
+                className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
+              >
                 <Github className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors">
+              <Link
+                href="#"
+                className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
+              >
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors">
+              <Link
+                href="#"
+                className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
+              >
                 <Mail className="h-5 w-5" />
               </Link>
             </div>
@@ -1254,5 +1254,5 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
