@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #00ff99;
+  --primary-hover: #00e187;
+  --secondary: #f9fafb;
+  --accent: #00ff99;
+  --muted: #f3f4f6;
+  --border: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #00ff99;
+  --primary-hover: #00e187;
+  --secondary: #1a1a1a;
+  --accent: #00ff99;
+  --muted: #111111;
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-jetbrains-mono), monospace;
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* Text selection */
+::selection {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 153, 0.1);
+}
+
+/* Terminal typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #00ff99;
+  }
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 0.15em solid #00ff99;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Grayscale to color transition */
+.grayscale-hover {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.grayscale-hover:hover {
+  filter: grayscale(0%);
+}
+
+/* Theme transition */
+html {
+  transition: background-color 0.3s ease;
+}
+
+/* Profile Image Styles */
+.melkie-profile-image {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 255, 153, 0.05) 0%, transparent 50%, rgba(0, 255, 153, 0.02) 100%);
+}
+
+.melkie-profile-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 255, 153, 0.1) 50%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.melkie-bio-image {
+  border: 2px solid rgba(0, 255, 153, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.1);
+}
+
+.melkie-bio-image:hover {
+  border-color: rgba(0, 255, 153, 0.4);
+  box-shadow: 0 0 30px rgba(0, 255, 153, 0.2);
+  transform: scale(1.05);
+}
+
+/* Background removal effect using CSS */
+.melkie-profile-image {
+  mask: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  -webkit-mask: radial-gradient(ellipse at center, black 60%, transparent 100%);
+}
+
+/* Enhanced glow effects */
+@keyframes profile-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.2), 0 0 40px rgba(0, 255, 153, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 153, 0.3), 0 0 60px rgba(0, 255, 153, 0.15);
+  }
+}
+
+.melkie-profile-image {
+  animation: profile-glow 3s ease-in-out infinite;
+}
+
+/* Color tone adjustments for dark/light themes */
+.dark .melkie-profile-image {
+  filter: contrast(1.2) saturate(0.7) brightness(1.1) hue-rotate(10deg);
+}
+
+.melkie-profile-image {
+  filter: contrast(1.1) saturate(0.8) brightness(1.05) hue-rotate(5deg);
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
