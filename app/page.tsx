@@ -949,13 +949,13 @@ export default function Portfolio() {
                     </Button>
                   </Link>
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    <div className="flex items-center gap-1">
+                    {/* <div className="flex items-center gap-1">
                       <Star className="h-4 w-4 text-[#00ff99]" />
                       <span>50+ Stars</span>
-                    </div>
+                    </div> */}
                     <div className="flex items-center gap-1">
                       <Code className="h-4 w-4 text-[#00ff99]" />
-                      <span>25+ Repositories</span>
+                      <span>50+ Repositories</span>
                     </div>
                   </div>
                 </div>
@@ -985,25 +985,46 @@ export default function Portfolio() {
           <div className="space-y-8">
             {[
               {
-                period: "2022 - Present",
-                title: "Full-Stack Developer",
-                company: "Freelance",
+                period: "2023 - Present",
+                title: "Full-Stack Developer & Information Science Student",
+                company: "Addis Ababa University / Freelance",
                 description:
-                  "Developing custom web applications using MERN stack for various clients.",
+                  "Building and deploying full-stack applications using React, TypeScript, Node.js, Express, MySQL, Mongodb, and Kotlin. Completed projects like RentSmart, PharmaTrack, and a multilingual Cinema Booking App, while studying software development, networks, and system design.",
               },
               {
-                period: "2021 - 2022",
-                title: "Frontend Developer",
-                company: "Tech Startup",
+                period: "2024",
+                title: "Internet Programming & React Developer",
+                company: "University & Self-Taught",
                 description:
-                  "Built responsive web interfaces and collaborated with design teams.",
+                  "Studied Internet Programming (HTML, CSS, JS, Bootstrap, PHP) through coursework, while learning React, Tailwind CSS, and Three.js independently to create modern and visually rich web applications.",
               },
               {
-                period: "2020 - 2021",
-                title: "Computer Science Student",
-                company: "University",
+                period: "2023 - 2024",
+                title: "OOP Developer (C#, Java, C++)",
+                company: "University Coursework",
                 description:
-                  "Focused on software engineering principles and personal projects.",
+                  "Built real-world applications using C++, Java, and C# such as a Hospital Management System and Student Project Tracker, applying object-oriented principles and software design patterns.",
+              },
+              {
+                period: "2023",
+                title: "Python Developer",
+                company: "Self-Taught",
+                description:
+                  "Built an Information Retrieval System for Afan Oromo using Python, and completed 80+ LeetCode challenges, improving algorithmic thinking and code optimization skills.",
+              },
+              {
+                period: "2023",
+                title: "Certified Web Developer",
+                company: "Coursera",
+                description:
+                  "Earned certifications in Web Development, HTML & CSS in Depth, JavaScript, React and Collaborative tools (Git/Github). Gained strong foundations in building responsive and interactive web interfaces.",
+              },
+              {
+                period: "2022",
+                title: "Beginner Programmer (C++)",
+                company: "Addis Ababa University",
+                description:
+                  "Started programming journey with C++, building foundational applications like a Hospital Management System while learning core logic and programming concepts.",
               },
             ].map((item, index) => (
               <motion.div
