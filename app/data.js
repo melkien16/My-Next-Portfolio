@@ -158,24 +158,24 @@ export const projects = [
 
 export const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Project Manager",
+    name: "Abinet Degefa",
+    role: "Junior Cloud Engineer",
     content:
-      "Exceptional work on our web application. Outstanding problem-solving skills.",
+      "Melkie is focused and reliable — he gets things done without overcomplicating the process.",
+    avatar: "/p3.jpg?height=60&width=60",
+  },
+  {
+    name: "Aymen Sileshi",
+    role: "FullStack Developer",
+    content:
+      "Melkie somehow manages to make time bend to their will. — dedication like that almost feels unfair to the rest of us!",
     avatar: "/placeholder.svg?height=60&width=60",
   },
   {
-    name: "David Chen",
-    role: "Senior Developer",
+    name: "Haile Asaye",
+    role: "Laravel Developer",
     content:
-      "Great experience working with Melkie. Brings creativity and technical excellence.",
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Startup Founder",
-    content:
-      "Helped us build our MVP from scratch. Full-stack expertise made all the difference.",
+      "Melkie writes clean code and always takes the time to understand what really matters in a project.",
     avatar: "/placeholder.svg?height=60&width=60",
   },
 ];

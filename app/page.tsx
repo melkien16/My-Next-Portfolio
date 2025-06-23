@@ -24,7 +24,9 @@ import {
   Moon,
   MapPin,
   Award,
+  Send, // <-- add this here
 } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -1165,7 +1167,7 @@ export default function Portfolio() {
                     Email
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    melkie.yilk@example.com
+                    melkie.yilk-ug@aau.edu.et
                   </p>
                 </div>
               </div>
@@ -1179,7 +1181,7 @@ export default function Portfolio() {
                     LinkedIn
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    linkedin.com/in/melkie-yilk
+                    linkedin.com/in/melkieyilk
                   </p>
                 </div>
               </div>
@@ -1193,7 +1195,7 @@ export default function Portfolio() {
                     GitHub
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    github.com/melkie-yilk
+                    github.com/melkien16
                   </p>
                 </div>
               </div>
@@ -1247,28 +1249,28 @@ export default function Portfolio() {
                 <span className="text-[#00ff99]">Melkie Yilk</span>
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                © 2024 All rights reserved.
+                ©{new Date().getFullYear()} All rights reserved.
               </p>
             </div>
 
             <div className="flex items-center gap-4">
               <Link
-                href="#"
+                href="https://www.github.com/melkien16"
                 className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
               >
                 <Github className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://www.linkedin.com/in/melkieyilk"
                 className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://t.me/melkien_de12"
                 className="text-gray-500 dark:text-gray-400 hover:text-[#00ff99] transition-colors"
               >
-                <Mail className="h-5 w-5" />
+                <Send className="h-5 w-5" />
               </Link>
             </div>
           </div>
