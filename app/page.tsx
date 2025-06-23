@@ -271,9 +271,17 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   className="border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black px-8 py-3 text-lg font-semibold"
+                  asChild
                 >
-                  <Download className="mr-2 h-5 w-5" />
-                  Resume
+                  <a
+                    href="/Melkie_Yilk_Resume.pdf"
+                    target="_blank"
+                    download="Melkie_Yilk_Resume.pdf"
+                    className="flex items-center"
+                  >
+                    <Download className="mr-2 h-5 w-5" />
+                    Resume
+                  </a>
                 </Button>
               </div>
               <motion.div
@@ -288,19 +296,19 @@ export default function Portfolio() {
                 <div className="flex gap-3">
                   <Link
                     href="https://github.com/melkien16"
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
+                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black dark:hover:bg-[#00ff99] transition-all duration-300 group"
                   >
                     <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
                   <Link
                     href="https://www.linkedin.com/in/melkieyilk"
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
+                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] dark:hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
                   >
                     <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
                   <Link
                     href="mailto:melkie.yilk-ug@aauedu.et"
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
+                    className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] dark:hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
                   >
                     <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
@@ -358,7 +366,8 @@ export default function Portfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hover:cursor-pointer"
+            onClick={() => scrollToSection("about")}
           >
             <ArrowDown className="h-6 w-6 text-[#00ff99] animate-bounce" />
           </motion.div>
