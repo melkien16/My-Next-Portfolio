@@ -291,13 +291,13 @@ export default function Portfolio() {
                     <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
                   <Link
-                    href="https://linkedin.com/in/melkie-yilk"
+                    href="https://www.linkedin.com/in/melkieyilk"
                     className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
                   >
                     <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
                   <Link
-                    href="mailto:melkie.yilk-ug@aau.com"
+                    href="mailto:melkie.yilk-ug@aauedu.et"
                     className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ff99] hover:text-black transition-all duration-300 group"
                   >
                     <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
@@ -419,7 +419,7 @@ export default function Portfolio() {
                       </p>
                       <div className="flex items-center gap-2 mt-2 text-sm text-gray-600 dark:text-gray-400">
                         <MapPin className="h-4 w-4" />
-                        <span>Ethiopia</span>
+                        <span>Addis Ababa, Ethiopia</span>
                       </div>
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export default function Portfolio() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
                       <div className="text-2xl font-bold text-[#00ff99]">
-                        2+
+                        3+
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">
                         Years Experience
@@ -587,12 +587,14 @@ export default function Portfolio() {
                     {"\n"}
                     <span className="text-cyan-400"> "experience"</span>
                     <span className="text-white">: </span>
-                    <span className="text-orange-400">2</span>
+                    <span className="text-orange-400">3+</span>
                     <span className="text-white">,</span>
                     {"\n"}
                     <span className="text-cyan-400"> "location"</span>
                     <span className="text-white">: </span>
-                    <span className="text-green-400">"Ethiopia"</span>
+                    <span className="text-green-400">
+                      "Addis Ababa, Ethiopia"
+                    </span>
                     <span className="text-white">,</span>
                     {"\n"}
                     <span className="text-cyan-400"> "status"</span>
@@ -767,14 +769,12 @@ export default function Portfolio() {
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                "GraphQL",
-                "Socket.io",
-                "Redis",
-                "Nginx",
-                "Jest",
-                "Cypress",
-                "Webpack",
-                "Babel",
+                "C++",
+                "Java",
+                "C#",
+                "Android Development (Kotlin)",
+                "Python",
+                "NLP",
                 "ESLint",
                 "Prettier",
               ].map((tech, index) => (
