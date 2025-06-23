@@ -978,9 +978,18 @@ export default function Portfolio() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Experience</h2>
-            <Button className="bg-[#00ff99] text-black hover:bg-[#00e187]">
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
+            <Button
+              className="bg-[#00ff99] text-black hover:bg-[#00e187]"
+              asChild
+            >
+              <a
+                href="/Melkie_Yilk_Resume.pdf"
+                target="_blank"
+                download="Melkie_Yilk_Resume.pdf"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+              </a>
             </Button>
           </motion.div>
 
