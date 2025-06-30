@@ -916,6 +916,7 @@ export default function Portfolio() {
                       <Button
                         size="sm"
                         className="bg-[#00ff99] text-black hover:bg-[#00e187] flex-1"
+                        onClick={() => window.open(project.liveUrl, "_blank")}
                       >
                         <ExternalLink className="h-4 w-4 mr-1" />
                         Live Demo
@@ -924,6 +925,7 @@ export default function Portfolio() {
                         size="sm"
                         variant="outline"
                         className="border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black"
+                        onClick={() => window.open(project.githubUrl, "_blank")}
                       >
                         <Github className="h-4 w-4" />
                       </Button>
