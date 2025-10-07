@@ -58,7 +58,7 @@ export const projects = [
       "Responsive design with secure authentication",
     ],
     image: "/rent-smart.png?height=300&width=500",
-    liveUrl: "https://smartrent-1.onrender.com/",
+    liveUrl: "https://smartrent-render-21.onrender.com/",
     githubUrl: "https://github.com/melkien16/smartrent.git",
     tags: ["Full-stack", "Rental", "Payments"],
     category: "fullstack",
