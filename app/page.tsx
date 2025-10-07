@@ -436,7 +436,7 @@ export default function Portfolio() {
                   </div>
 
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    Passionate MERN Stack Developer with 2+ years of experience
+                    Passionate MERN Stack Developer with 3+ years of experience
                     building scalable web applications. I love turning complex
                     problems into simple, beautiful solutions through clean code
                     and innovative thinking.
@@ -453,7 +453,7 @@ export default function Portfolio() {
                     </div>
                     <div className="text-center p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
                       <div className="text-2xl font-bold text-[#00ff99]">
-                        15+
+                        11+
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">
                         Projects Completed
