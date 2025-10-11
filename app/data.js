@@ -76,7 +76,7 @@ export const projects = [
       "Responsive design for mobile and desktop",
     ],
     image: "/e-commerce.png?height=300&width=500",
-    liveUrl: "#",
+    liveUrl: "https://addisspark.onrender.com",
     githubUrl: "https://github.com/melkien16/AddisSpark.git",
     tags: ["E-commerce", "Electronics", "Payments"],
     category: "fullstack",
